@@ -21,18 +21,7 @@
   }
   
   function getStudentStatus(student: Student): string {
-    student.passed =
-      student.name == "Sebastian"
-        ? student.handedInOnTime
-          ? true
-          : false
-        : false;
-  
-    if (student.passed) {
-      return "VG";
-    } else {
-      return "IG";
-    }
+    return student.name == 'Sebastian' && student.handedInOnTime ? 'VG' : 'IG';
   }
   
   /*
