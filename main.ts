@@ -33,8 +33,8 @@ class Temperature {
   constructor(public location: string, public date: Date, public temp: number) {}
 }
 
-function averageWeeklyTemperature(readings: Temperature[]) {
-  const ONE_WEEK_AGO = Date.now() - 604800000, relevatReadings = readings.filter( reading => reading.location === 'Stockholm' && reading.date.getTime() > ONE_WEEK_AGO );
+function averageWeeklyTemperature(readings: Temperature[], location: string = 'Stockholm') {
+  const ONE_WEEK_AGO = Date.now() - 604800000, relevatReadings = readings.filter( reading => reading.location === location && reading.date.getTime() > ONE_WEEK_AGO );
 
   return relevatReadings.reduce((totalTemp, reading) => totalTemp + reading.temp, 0) / relevatReadings.length;
 }
