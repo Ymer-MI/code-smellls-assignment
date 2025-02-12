@@ -52,18 +52,22 @@
     image: string,
     parent: HTMLElement
   ) {
-    let container = document.createElement("div");
-    let title = document.createElement("h4");
-    let pris = document.createElement("strong");
-    let imageTag = document.createElement("img");
+    const container = document.createElement("section"), img = document.createElement("img"), title = document.createElement("h4"),
+      details = document.createElement('details'), div = document.createElement('div'), input = document.createElement('input'),
+      span = document.createElement("span");
   
+    img.src = image;
     title.innerHTML = name;
-    pris.innerHTML = price.toString();
-    imageTag.src = image;
+    details.innerHTML = description;
+    span.innerHTML = `${price}:-`;
+
+    Object.assign(input, { 
+      type: 'number',
+      value: amount
+    });
   
-    container.appendChild(title);
-    container.appendChild(imageTag);
-    container.appendChild(pris);
+    div.append(span, input);
+    container.append(img, title, details, div);
     parent.appendChild(container);
   }
   
