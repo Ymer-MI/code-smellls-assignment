@@ -5,13 +5,7 @@
   */
 
   function getLength(jumpings: number[]): number {
-    let totalNumber = 0;
-  
-    totalNumber = jumpings.reduce(
-      (jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump
-    );
-  
-    return totalNumber;
+    return jumpings.reduce( (totalDistance, currentJump) => totalDistance + currentJump );
   }
   
   /*
