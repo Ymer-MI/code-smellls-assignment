@@ -100,27 +100,22 @@ function concatenateStrings() {
 
 /* 
 7. Denna funktion skall kontrollera att en användare är över 20 år och göra någonting.
-    Det finns dock problem med denna typ av funktion. Vad händer när kraven ändras och
-    fler och fler parametrar behöver läggas till? T.ex. avatar eller adress. Hitta en bättre
-    lösning som är hållbar och skalar bättre. 
+Det finns dock problem med denna typ av funktion. Vad händer när kraven ändras och
+fler och fler parametrar behöver läggas till? T.ex. avatar eller adress. Hitta en bättre
+lösning som är hållbar och skalar bättre. 
 */
-function createUser(
-  name: string,
-  birthday: Date,
-  email: string,
-  password: string
-) {
-  // Validation
 
-  let ageDiff = Date.now() - birthday.getTime();
-  let ageDate = new Date(ageDiff);
-  let userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+interface IUser {
+  name: string;
+  birthday: Date;
+  email: string;
+  password: string;
+}
 
-  console.log(userAge);
-
-  if (!(userAge < 20)) {
-    // Logik för att skapa en användare
-  } else {
-    return "Du är under 20 år";
+function createUser(user: IUser, legalAge: number = 20) {
+  if (new Date().getFullYear() - user.birthday.getFullYear() < legalAge) {
+    return `Du \xE4r under ${legalAge} år`;
   }
+  
+  // Logik för att skapa en användare
 }
