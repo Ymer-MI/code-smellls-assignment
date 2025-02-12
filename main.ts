@@ -114,7 +114,7 @@ interface IUser {
 
 function createUser(user: IUser, legalAge: number = 20) {
   if (new Date().getFullYear() - user.birthday.getFullYear() < legalAge) {
-    return `Du \xE4r under ${legalAge} år`;
+    return `Du \xE4r under ${legalAge} \xE5r`;
   }
   
   // Logik för att skapa en användare
