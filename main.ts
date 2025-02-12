@@ -36,7 +36,7 @@
   function averageWeeklyTemperature(readings: Temperature[]) {
     const ONE_WEEK_AGO = Date.now() - 604800000, relevatReadings = readings.filter( reading => reading.location === 'Stockholm' && reading.date.getTime() > ONE_WEEK_AGO );
   
-    return relevatReadings.reduce((totalTemp, todaysTemp) => totalTemp + todaysTemp.temp, 0) / relevatReadings.length;
+    return relevatReadings.reduce((totalTemp, reading) => totalTemp + reading.temp, 0) / relevatReadings.length;
   }
   
   /*
