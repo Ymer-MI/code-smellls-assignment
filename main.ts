@@ -29,22 +29,14 @@
     Det finns flera code smells att identifiera här. Vissa är lurigare än andra.
     */
   
-  class Temp {
-    constructor(public q: string, public where: Date, public v: number) {}
+  class Temperature {
+    constructor(public location: string, public date: Date, public temp: number) {}
   }
   
-  function averageWeeklyTemperature(heights: Temp[]) {
-    let r = 0;
+  function averageWeeklyTemperature(readings: Temperature[]) {
+    const ONE_WEEK_AGO = Date.now() - 604800000, relevatReadings = readings.filter( reading => reading.location === 'Stockholm' && reading.date.getTime() > ONE_WEEK_AGO );
   
-    for (let who = 0; who < heights.length; who++) {
-      if (heights[who].q === "Stockholm") {
-        if (heights[who].where.getTime() > Date.now() - 604800000) {
-          r += heights[who].v;
-        }
-      }
-    }
-  
-    return r / 7;
+    return relevatReadings.reduce((totalTemp, todaysTemp) => totalTemp + todaysTemp.temp, 0) / relevatReadings.length;
   }
   
   /*
