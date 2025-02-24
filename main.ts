@@ -5,7 +5,7 @@ dessa hopplängder.
 */
 
 function getLength(jumpings: number[]): number {
-  return jumpings.reduce( (totalDistance, currentJump) => totalDistance + currentJump );
+  return jumpings.reduce( (totalDistance, currentJump) => totalDistance + currentJump, 0 );
 }
 
 /*
