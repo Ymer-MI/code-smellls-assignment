@@ -52,7 +52,9 @@ function showProduct(
   image: string,
   parent: HTMLElement
 ) {
-  const container = document.createElement("section"), img = document.createElement("img"), title = document.createElement("h4"),
+  const container = document.createElement("section");
+  
+  /* , img = document.createElement("img"), title = document.createElement("h4"),
     details = document.createElement('details'), div = document.createElement('div'), input = document.createElement('input'),
     span = document.createElement("span");
 
@@ -67,7 +69,18 @@ function showProduct(
   });
 
   div.append(span, input);
-  container.append(img, title, details, div);
+  container.append(img, title, details, div); */
+
+  container.innerHTML = `
+    <img src="${image}"/>
+    <h4>${name}</h4>
+    <details>${description}</details>
+    <div>
+      <span>${price}:-</span>
+      <input type="number" value=${amount}/>
+    </div
+  `;
+
   parent.appendChild(container);
 }
 
