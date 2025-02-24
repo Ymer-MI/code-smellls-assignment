@@ -125,8 +125,12 @@ interface IUser {
   password: string;
 }
 
+function isOfAge(age: IUser['birthday'], legalAge: number = 20) {
+  return new Date().getFullYear() - age.getFullYear() >= legalAge;
+}
+
 function createUser(user: IUser, legalAge: number = 20) {
-  if (new Date().getFullYear() - user.birthday.getFullYear() < legalAge) {
+  if (!isOfAge(user.birthday)) {
     return `Du \xE4r under ${legalAge} \xE5r`;
   }
   
